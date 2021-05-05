@@ -42,7 +42,7 @@ using namespace std;
 
 void checks(ll int n)
 {
-    ll int digits,first,ans,second,flag=1;
+    ll int digits,first,ans,second,flag,c,i;
    
     ans=9;
     if(n<10)
@@ -52,18 +52,26 @@ void checks(ll int n)
     }
 
     digits= floor(log10(n) + 1);
-    first=(int)(n / pow(10, digits-1));
+    first=(n / pow(10, digits-1));
+    second=(n / pow(10, digits-2));
     ans=9*(digits-1);
     ans+=(first-1);
-    while(n)
+    flag=1;
+    c=digits;
+    c-=1;
+    i=2;
+    while(c--)
     {
-        second=n%10;
+        second=(n / pow(10, digits-i));
+        second=second%10;
         if(second<first)
         {
             flag=0;
             break;
         }
-        n/=10;
+        else if(second>first)
+        break;
+        i++;
 
     }
     if(flag)
