@@ -42,8 +42,8 @@ using namespace std;
 
 int main()
 {
-    ll cases,n,i,j,tmp,ans,flag,index,left,right,si;
-    vector<ll> pirhanas,indexes,cop;
+    ll cases,n,i,j,tmp,ans,flag,index,left,right,si,val;
+    vector<ll> pirhanas,indexes;
     cin>>cases;
     while(cases--)
     {
@@ -54,7 +54,7 @@ int main()
             pirhanas.push_back(tmp);
             if(i-1>=0 && pirhanas[i]>pirhanas[i-1])
             indexes.push_back(i);
-            else if(i-1>0 && pirhanas[i]<pirhanas[i-1])
+            else if(i-1>=0 && pirhanas[i]<pirhanas[i-1])
             indexes.push_back(i-1);
         }
         if(pirhanas.size()==1)
@@ -66,26 +66,26 @@ int main()
         flag=1;
         for(i=0;i<indexes.size();i++)
         {
-            cop=pirhanas;
             ans=indexes[i];
             left=indexes[i]-1;
             right=indexes[i]+1;
             index=indexes[i];
+            val=pirhanas[index];
             si=n;
             while(si>1)
             {
-                if(left>=0 && cop[index]>cop[left])
+                if(left>=0 && val>pirhanas[left])
                 {
                     si--;
                     left--;
-                    cop[index]+=1;
+                    val+=1;
 
                 }
-                else if(right<cop.size() && cop[index]>cop[right])
+                else if(right<n && val>pirhanas[right])
                 {
                      si--;
                      right++;
-                     cop[index]+=1;
+                     val+=1;
                 }
                 else
                 {
@@ -104,7 +104,7 @@ int main()
 
         indexes.clear();
         pirhanas.clear();
-        cop.clear();
+       
     }  
     return 0;
 }
