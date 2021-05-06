@@ -42,6 +42,8 @@ using namespace std;
 
 int main()
 {
-  cout<<pow(10,0);
+  vector<int> a{1,2,3,4};
+  a.erase(a.begin()+1);
+  cout<<a[1];
     return 0;
 }
