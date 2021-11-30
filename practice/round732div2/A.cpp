@@ -1,5 +1,3 @@
-// #include <boost/multiprecision/cpp_int.hpp>
-// using namespace boost::multiprecision;
 #pragma GCC optimize("O2")
 #include<bits/stdc++.h>
 
@@ -27,15 +25,41 @@ using namespace std;
 
 void solve()
 {
-    ll l,r,count=0;
-   cin>>l>>r;
-   for(ll i=l;i<=r;i++)
+   ll n,i,difA=0,difB=0,j;
+   stack<ll> more,less;
+   cin>>n;
+   vi a(n),b(n);
+   for(i=0;i<n;i++)
+   cin>>a[i];
+   for(i=0;i<n;i++)
+   cin>>b[i];
+   for(i=0;i<n;i++)
    {
-       if(i%3==0)
-       count++;
+       if(a[i]>b[i])
+       {
+           difB+=(a[i]-b[i]);
+           for(j=0;j<(a[i]-b[i]);j++)
+           more.push(i+1);
+       }
+       else if(b[i]>a[i])
+       {
+           difA+=(b[i]-a[i]);
+           for(j=0;j<(b[i]-a[i]);j++)
+           less.push(i+1);
+       }
    }
-   deb(count)
-   
+   if(difA!=difB)
+   {
+       deb(-1)
+       return;
+   }
+   deb(more.size())
+   while(!more.empty())
+   {
+       deB(more.top(),less.top())
+       more.pop();
+       less.pop();
+   }
 }
 
 

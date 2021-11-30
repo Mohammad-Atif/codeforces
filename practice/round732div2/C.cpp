@@ -1,5 +1,3 @@
-// #include <boost/multiprecision/cpp_int.hpp>
-// using namespace boost::multiprecision;
 #pragma GCC optimize("O2")
 #include<bits/stdc++.h>
 
@@ -27,15 +25,19 @@ using namespace std;
 
 void solve()
 {
-    ll l,r,count=0;
-   cin>>l>>r;
-   for(ll i=l;i<=r;i++)
-   {
-       if(i%3==0)
-       count++;
-   }
-   deb(count)
+    ll n,m,i,j,flag,k;
    
+   cin>>n>>m;
+   vector<string> original(n),after(n-1);
+   vi done(n-1,0);
+   vector<char> first,second,other;
+   for(i=0;i<n;i++)
+   cin>>original[i];
+   for(i=0;i<(n-1);i++)
+   cin>>after[i];
+   sort(all(original));
+   for(i=0;i<n;i++)
+   cout<<original[i]<<" ";
 }
 
 

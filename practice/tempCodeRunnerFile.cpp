@@ -1,1 +1,2 @@
-deb(pos_a)
+deB("dotcount:",dotcount)
+    // deB("d",d)

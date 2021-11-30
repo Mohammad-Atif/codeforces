@@ -1,5 +1,3 @@
-// #include <boost/multiprecision/cpp_int.hpp>
-// using namespace boost::multiprecision;
 #pragma GCC optimize("O2")
 #include<bits/stdc++.h>
 
@@ -25,17 +23,51 @@ using namespace std;
 #define N 200009
 #define vi vector<ll>
 
+
 void solve()
 {
-    ll l,r,count=0;
-   cin>>l>>r;
-   for(ll i=l;i<=r;i++)
-   {
-       if(i%3==0)
-       count++;
-   }
-   deb(count)
-   
+    ll n,ans=0,i,evenIndexes,oddIndexes,even=0,odd=0;
+    cin>>n;
+    vi ar(n);
+    for(i=0;i<n;i++)
+    cin>>ar[i];
+
+    if(n%2==0)
+    {
+        evenIndexes=oddIndexes=n/2;
+    }
+    else
+    {
+        evenIndexes=n/2;
+        oddIndexes=evenIndexes+1;
+    }
+
+
+    for(i=0;i<n;i++)
+    {
+        if(ar[i]%2==0)
+        even++;
+        else
+        odd++;
+    }
+
+    if(even>=oddIndexes)
+    {
+        ans+=oddIndexes;
+    }
+    else
+    ans+=even;
+    
+    if(odd>=evenIndexes)
+    {
+        ans+=evenIndexes;
+    }
+    else
+    ans+=odd;
+
+    deb(ans)
+    
+    
 }
 
 

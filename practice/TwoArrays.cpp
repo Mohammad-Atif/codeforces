@@ -27,15 +27,25 @@ using namespace std;
 
 void solve()
 {
-    ll l,r,count=0;
-   cin>>l>>r;
-   for(ll i=l;i<=r;i++)
-   {
-       if(i%3==0)
-       count++;
-   }
-   deb(count)
-   
+    ll n;
+    cin>>n;
+    vi a(n),b(n);
+    ll i;
+    for(i=0;i<n;i++)
+    cin>>a[i];
+    for(i=0;i<n;i++)
+    cin>>b[i];
+    sort(all(a));
+    sort(all(b));
+    for(i=0;i<n;i++)
+    {
+        if(a[i]>b[i] || a[i]+1<b[i])
+        {
+            NO
+            return;
+        }
+    }
+    YES
 }
 
 

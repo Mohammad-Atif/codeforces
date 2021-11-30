@@ -1,5 +1,3 @@
-// #include <boost/multiprecision/cpp_int.hpp>
-// using namespace boost::multiprecision;
 #pragma GCC optimize("O2")
 #include<bits/stdc++.h>
 
@@ -25,28 +23,27 @@ using namespace std;
 #define N 200009
 #define vi vector<ll>
 
-void solve()
-{
-    ll l,r,count=0;
-   cin>>l>>r;
-   for(ll i=l;i<=r;i++)
-   {
-       if(i%3==0)
-       count++;
-   }
-   deb(count)
-   
-}
+
 
 
 int main()
 { 
     // ios_base::sync_with_stdio(false);
     // cin.tie(NULL);
-    ll t;
-    cin>>t;
-    while(t--){
-        solve();
-    }   
+    ll n,i,minn=LONG_LONG_MAX,x,y;
+    cin>>n;
+    vi ar(n);
+    for(i=0;i<n;i++)
+    cin>>ar[i];
+    for(i=0;i<n;i++)
+    {
+        if(abs(ar[i]-ar[(i+1)%n])<minn)
+        {
+            minn=abs(ar[i]-ar[(i+1)%n]);
+            x=i+1;
+            y=((i+1)%n)+1;
+        }
+    }
+    deB(x,y)
     reto
 }

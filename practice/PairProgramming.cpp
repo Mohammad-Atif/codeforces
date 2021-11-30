@@ -35,8 +35,24 @@ void solve()
     for(i=0;i<m;i++)
     cin>>mono[i];
 
-    polysum=accumulate(all(poly),0);
-    monosum=accumulate(all(mono),0);
+    // polysum=accumulate(all(poly),0);
+    // monosum=accumulate(all(mono),0);
+    polysum=0;
+    monosum=0;
+    for(i=0;i<n;i++)
+    {
+        if(poly[i]!=0)
+        polysum+=poly[i];
+        else
+        polysum--;
+    }
+    for(i=0;i<m;i++)
+    {
+        if(mono[i]!=0)
+        monosum+=mono[i];
+        else
+        monosum--;
+    }
 
     i=0;j=0;
     while(i<n && j<m)

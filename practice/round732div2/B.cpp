@@ -1,5 +1,3 @@
-// #include <boost/multiprecision/cpp_int.hpp>
-// using namespace boost::multiprecision;
 #pragma GCC optimize("O2")
 #include<bits/stdc++.h>
 
@@ -25,17 +23,44 @@ using namespace std;
 #define N 200009
 #define vi vector<ll>
 
+bool compare(string s1,string s2)
+{
+    return s1[0]<s2[0];
+}
+
 void solve()
 {
-    ll l,r,count=0;
-   cin>>l>>r;
-   for(ll i=l;i<=r;i++)
-   {
-       if(i%3==0)
-       count++;
-   }
-   deb(count)
+   ll n,m,i,j,flag,k;
    
+   cin>>n>>m;
+   vector<string> original(n),after(n-1);
+   vi done(n-1,0);
+   vector<char> first,second,other;
+   for(i=0;i<n;i++)
+   cin>>original[i];
+   for(i=0;i<(n-1);i++)
+   cin>>after[i];
+   vector<string> both(original);
+   both.insert(both.end(),after.begin(),after.end());
+   vector<int> alphabets(123,0);
+   for(i=0;i<n;i++)
+   {
+       for(j=0;j<m;j++)
+       {
+           alphabets[int(both[i][j])]++;
+       }
+
+   }
+   string ans="";
+   for(i=97;i<=122;i++)
+   {
+       if(alphabets[i]%2==1)
+       {
+           ans.push_back(char(i));
+       }
+   }
+   cout<<ans<<endl;
+
 }
 
 
