@@ -27,8 +27,37 @@ using namespace std;
 
 void solve()
 {
-  
-   
+    ll a,b,c;
+    cin>>a>>b>>c;
+
+    if(a+c == 2*b)
+    {
+        YES
+    }
+    else if( ( (a+c)%2==0 && ((a+c)/2)%b==0 ) || ((2*b-a)!=0 && (2*b-a)%c==0 && ((2*b-a)*c>0)) || ((2*b-c)!=0 && (2*b-c)%a==0 && ((2*b-c)*a>0) )  )
+    YES
+    else
+    NO
+    // if((a==b && b==c) || (a>=b && b>c && c==1) || (a<b && b<=c && a==1) )
+    // {
+    //     YES
+    //     return;
+    // }
+
+    // if(b>a && b>c)
+    // {
+    //     NO
+    //     return;
+    // }
+
+    // if((a==b && b%c==0 ) || (a==c && a%b==0) || (b==c && b%a==0) )
+    // {
+    //     YES
+    //     return;
+    // }
+
+
+
 }
 
 

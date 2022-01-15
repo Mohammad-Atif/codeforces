@@ -1,190 +1,147 @@
 #pragma GCC optimize("O2")
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 #define ll long long
 
 #define pb push_back
-#define deb(x) cout<<x<<"\n";
-#define deB(x,y) cout<<x<<" "<<y<<"\n";
-#define Deb(x,y,z) cout<<x<<" "<<y<<" "<<z<<"\n";
+#define deb(x) cout << x << "\n";
+#define deB(x, y) cout << x << " " << y << "\n";
+#define Deb(x, y, z) cout << x << " " << y << " " << z << "\n";
 #define YES printf("YES\n");
 #define Yes printf("Yes\n");
 #define NO printf("NO\n");
 #define No printf("No\n");
-#define all(v) (v).begin(),(v).end()
+#define all(v) (v).begin(), (v).end()
 
 #define cont continue;
 #define reto return 0;
 #define sz size()
 #define spmod 1116295198451
 #define mod 1000000007
-#define md 998244353 
+#define md 998244353
 #define N 200009
 #define vi vector<ll>
 
 void solve()
 {
-    ll k,n,m,i,j,polysum,monosum;
-    cin>>k>>n>>m;
-    vi poly(n);
-    vi mono(m);
+    ll k, n, m, i, j, l;
+    cin >> k >> n >> m;
+    vi mono(n), poly(m);
+    for (i = 0; i < n; i++)
+        cin >> mono[i];
+    for (i = 0; i < m; i++)
+        cin >> poly[i];
+
+    i = 0;
+    j = 0;
     vi ans;
-    for(i=0;i<n;i++ )
-    cin>>poly[i];
-    for(i=0;i<m;i++)
-    cin>>mono[i];
-
-    // polysum=accumulate(all(poly),0);
-    // monosum=accumulate(all(mono),0);
-    polysum=0;
-    monosum=0;
-    for(i=0;i<n;i++)
+    while (i < n && j < m)
     {
-        if(poly[i]!=0)
-        polysum+=poly[i];
-        else
-        polysum--;
-    }
-    for(i=0;i<m;i++)
-    {
-        if(mono[i]!=0)
-        monosum+=mono[i];
-        else
-        monosum--;
-    }
-
-    i=0;j=0;
-    while(i<n && j<m)
-    {
-        if(polysum<=monosum )
+        if (mono[i] <= poly[j])
         {
-            if(k>=poly[i])
+            if (mono[i] == 0)
             {
-                if(poly[i]==0)
+                ans.push_back(0);
                 k++;
-                ans.push_back(poly[i]);
-                if(mono[j]>k)
-                {
-                    deb(-1)
-                    return;
-                }
-                if(mono[j]==0)
-                k++;
-                ans.push_back(mono[j]);
-                
-            }
-            else if(k>=mono[j])
-            {
-                if(mono[j]==0)
-                k++;
-                ans.push_back(mono[j]);
-                if(poly[i]>k)
-                {
-                    deb(-1)
-                    return;
-                }
-                if(poly[i]==0)
-                k++;
-                ans.push_back(poly[i]);
-                
+                i++;
             }
             else
             {
-                deb(-1)
-                return ;
+                if (mono[i] > k)
+                {
+                    deb(-1) return;
+                }
+                else
+                {
+                    ans.push_back(mono[i]);
+                    i++;
+                }
             }
         }
-        else 
+        else
         {
-            if(k>=mono[j])
+            if (poly[j] == 0)
             {
-                if(mono[j]==0)
+                ans.push_back(0);
+                j++;
                 k++;
-                ans.push_back(mono[j]);
-                if(poly[i]>k)
-                {
-                    deb(-1)
-                    return;
-                }
-                if(poly[i]==0)
-                k++;
-                ans.push_back(poly[i]);
-                
-            }
-            else if(k>=poly[i])
-            {
-                if(poly[i]==0)
-                k++;
-                ans.push_back(poly[i]);
-                if(mono[j]>k)
-                {
-                    deb(-1)
-                    return;
-                }
-                if(mono[j]==0)
-                k++;
-                ans.push_back(mono[j]);
-                
             }
             else
             {
-                deb(-1)
-                return;
+                if (poly[j] > k)
+                {
+                    deb(-1) return;
+                }
+                else
+                {
+                    ans.push_back(poly[j]);
+                    j++;
+                }
             }
         }
-        polysum-=poly[i];
-        monosum-=mono[j];
-        i++;
-        j++;
-        
     }
-    
-    while(i<n)
+
+    while (i < n)
     {
-       if(k>=poly[i])
+        if (mono[i] == 0)
+        {
+            ans.push_back(0);
+            k++;
+            i++;
+        }
+        else
+        {
+            if (mono[i] > k)
             {
-                if(poly[i]==0)
-                k++;
-                ans.push_back(poly[i++]);
+                deb(-1) return;
             }
             else
             {
-                deb(-1)
-                return;
+                ans.push_back(mono[i]);
+                i++;
             }
+        }
     }
-    while(j<m)
+
+    while (j < m)
     {
-       if(k>=mono[j])
+        if (poly[j] == 0)
+        {
+            ans.push_back(0);
+            j++;
+            k++;
+        }
+        else
+        {
+            if (poly[j] > k)
             {
-                if(mono[j]==0)
-                k++;
-                ans.push_back(mono[j++]);
+                deb(-1) return;
             }
             else
             {
-                deb(-1)
-                return;
+                ans.push_back(poly[j]);
+                j++;
             }
+        }
     }
+
     for(i=0;i<ans.size();i++)
-    cout<<ans[i]<<" ";
-
-    deb("")
-
-
+    {
+        cout<<ans[i]<<" ";
+    }
+    deb(" ")
 }
 
-
 int main()
-{ 
+{
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     ll t;
-    cin>>t;
-    while(t--){
+    cin >> t;
+    while (t--)
+    {
         solve();
-    }   
+    }
     reto
 }

@@ -27,7 +27,24 @@ using namespace std;
 
 void solve()
 {
-  
+  ll x,n;
+  cin>>x>>n;
+  ll d;
+  switch(n%4)
+  {
+      case 1: d=-n;
+      break;
+      case 2: d=1;
+      break;
+      case 3: d=n+1;
+      break;
+      case 0: d=0;
+      break;
+  }
+  if(x%2==0)
+  deb(x+d)
+  else
+  deb(x-d)
    
 }
 

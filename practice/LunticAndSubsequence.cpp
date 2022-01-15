@@ -27,8 +27,17 @@ using namespace std;
 
 void solve()
 {
-  
-   
+    ll n;
+    cin>>n;
+    vi ar(n);
+    ll i,j,oneCount,zeroCount;
+    for(i=0;i<n;i++)
+    cin>>ar[i];
+    oneCount = count(all(ar),1);
+    zeroCount = count(all(ar),0);
+    ll m = pow(2,zeroCount);
+    ll ans=oneCount*m;
+    deb(ans)
 }
 
 
